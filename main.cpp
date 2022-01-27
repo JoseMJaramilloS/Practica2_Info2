@@ -6,12 +6,12 @@ using namespace std;
 int main()
 {
     int select, num=0, a=0, b=0; //tam=0;
-    char char_array[16]={'\0'};
+    char char_array[16]={'\0'}, charA[201];
     int money[10]={50000,20000,10000,5000,2000,1000,500,200,100,50};
 
     cout<<"MENU PRINCIPAL"<<endl;
     cout<<"(1) Combinacion de billetes"<<endl;
-    cout<<"(2)"<<endl;
+    cout<<"(2) Arreglo de letras repetidas"<<endl;
     cout<<"(4) Cadena de numeros a enteros"<<endl;
     cout<<"(5)"<<endl;
     cout<<"(7)"<<endl;
@@ -38,8 +38,15 @@ int main()
             break;
         }
         case 2:
+            cout<<"\nPROBLEMA 2"<<endl;
+            for(int i=0;i<200;i++){
+                charA[i]=rand()%26+65; //rand()%26: genera numeros entre 0 y 25
+                cout<<charA[i];
+            }
+            isRepeat(charA); //Funcion de comparacion
             break;
         case 4:{
+            cout<<"\nPROBLEMA 4"<<endl;
 //            //para memoria dinamica: gets(cadena);
 //            cout<<"Ingrese longitud de la cadena: "; cin>>tam;
 //            char *cadena= new char[5]; //Reservo memoria en el heap, para un arreglo de tamaño tam;

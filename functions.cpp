@@ -1,7 +1,7 @@
 #include "functions.h"
 
-//Implementacion de las funciones
-int Roman2int(char letra){//10
+//IMPLEMENTACION DE FUNCIONES
+int Roman2int(char letra){//10 Transforma numeros romanos a enteros
     int num;
     switch(letra){
     case 'M':
@@ -32,7 +32,7 @@ int Roman2int(char letra){//10
     return num;
 }
 
-int char2int(char cadena[]){//4
+int char2int(char cadena[]){//4 Convierte cadenas de caracteres a enteros
     int entero=0;
 
     for(int i=0 ; cadena[i]!='\0' ; i++){
@@ -43,7 +43,7 @@ int char2int(char cadena[]){//4
     return entero;
 }
 
-int char2int_2(char cadena[], int tam){
+int char2int_2(char cadena[], int tam){//4 Convierte cadenas de caracteres a enteros (MEMORIA DINAMICA)
     int entero=0;
 
     for(int i=0 ; i<tam ; i++){
@@ -52,4 +52,25 @@ int char2int_2(char cadena[], int tam){
     }
 
     return entero;
+}
+
+//void int2char(int *num, ){//5 Convierte enteros a cadena de caracteres
+//    char *cadena;
+
+//}
+
+void isRepeat(char arreglo[]){//2 Encuentra el numero de letras repetidas en un arreglo
+    char letra=65;
+    int count;
+    for(int i=0; i<26; i++,letra++){//Recorre el alfabeto ASCII
+        count=0;
+
+        for(int j=0;j<200;j++){//Recorre el arreglo
+            if(letra==arreglo[j]) {
+                count++; //Compara las letras y cuenta las repetidas
+            }
+        }
+        cout<<"\n"<<letra<<": "<<count;//Se imprimen resultados
+    }
+    cout<<endl;
 }
