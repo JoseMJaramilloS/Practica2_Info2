@@ -78,9 +78,11 @@ int main()
                 cout<<"Ingrese una cadena de caracteres: ";
                 fflush(stdin); //limpio basura de la terminal
                 cin.getline(cadena,30,'\n'); //se obtiene una cadena de la entrada estandar
-                //cadena ya es un arreglo y apunta a una direccion
-                borrarRepetidos(cadena);
 
+                //cadena ya es un arreglo y apunta a una direccion
+                cout<<"Original: "; mostrarCadena(cadena);
+                cout<<". Sin repetidos: "; borrarRepetidos(cadena);
+                cout<<endl;
 
                 break;
             }

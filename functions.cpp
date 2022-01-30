@@ -137,24 +137,20 @@ void mostrarCadena(char *cadena){//7 Muestra una cadena de caracteres
 }
 
 void borrarRepetidos(char *cadena){
-    cout<<"Original: "; mostrarCadena(cadena);
-    cout<<". Sin repetidos: ";
-    char cadena_final[30];
 
-    //replicando la cadena
-    for(int i=0;*(cadena+i) != '\0';i++){
-        cadena_final[i]=*(cadena+i);
-    }
+    int j=0;
+    char cadena_final[30];
+    cadena_final[0] = '\0';
 
     //comparando las cadenas
     for(int i=0;*(cadena+i) != '\0';i++){               //letra que se evalua: *(cadena+i)
-        for (int j=0;cadena_final[j] != '\0';j++) {
-            if(cadena_final[j] == *(cadena+i) && i!=j){
-                cadena_final[j]
-                //break;
-            }
+        for (j=0;*(cadena_final+j) != *(cadena+i) && *(cadena_final+j) !='\0';j++);
+
+        if(*(cadena_final+j)=='\0'){ //si llegó hasta el final sin encontrar repetidos
+            *(cadena_final+j)=*(cadena+i);
+            cout<<*(cadena+i);
         }
-        cout<<*(cadena+i);
+
 
     }
 }
