@@ -3,6 +3,9 @@
 
 using namespace std;
 
+//variables globales
+int **matriz, n; //cuadrado magico
+
 int main()
 {
     int select, num=0, a=0, b=0; //tam=0;
@@ -16,7 +19,7 @@ int main()
     cout<<"(5)"<<endl;
     cout<<"(7)"<<endl;
     cout<<"(10) Numeros romanos"<<endl;
-    cout<<"(12)"<<endl;
+    cout<<"(12) Cuadrado magico"<<endl;
     cout<<"(13)"<<endl;
     cout<<"(15)"<<endl;
     cout<<"(18)"<<endl;
@@ -89,6 +92,16 @@ int main()
         }
 
         case 12:
+            pedirMatriz();
+            mostrarMatriz(matriz,n);
+            isMagic(matriz,n);
+
+            //LIBERO MEMORIA
+            for(int i=0;i<n;i++){
+               delete[] matriz[i];
+            }
+            delete[] matriz;
+
             break;
         case 13:
             break;
