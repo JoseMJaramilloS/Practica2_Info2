@@ -113,9 +113,6 @@ void isMagic(int **matriz, int n){//12 Comprueba si es cuadrado magico
             sumFil += *(*(matriz + i)+j); //sumando filas de la matriz
             sumCol += *(*(matriz + j)+i); //sumando columnas de la matriz
 
-//            if(i==j) sumDiag1 += *(*(matriz + i)+j); //sumando diagonal1
-//            if(n-i==i) sumDiag2 += *(*(matriz + i)+j); //sumando diagonal2
-
             if(aux==sumFil && aux==sumCol && i>0) magic=true; //se prueban filas y columnas
             else magic=false;
         }
@@ -130,4 +127,34 @@ void isMagic(int **matriz, int n){//12 Comprueba si es cuadrado magico
     if(magic==true) cout<<"Es cuadrado magico"<<endl;
     else cout<<"NO es cuadrado magico"<<endl;
 
+}
+
+void mostrarCadena(char *cadena){//7 Muestra una cadena de caracteres
+    for(int i=0;*(cadena+i) != '\0';i++){
+        cout<<*(cadena+i);
+    }
+    //cout<<endl;
+}
+
+void borrarRepetidos(char *cadena){
+    cout<<"Original: "; mostrarCadena(cadena);
+    cout<<". Sin repetidos: ";
+    char cadena_final[30];
+
+    //replicando la cadena
+    for(int i=0;*(cadena+i) != '\0';i++){
+        cadena_final[i]=*(cadena+i);
+    }
+
+    //comparando las cadenas
+    for(int i=0;*(cadena+i) != '\0';i++){               //letra que se evalua: *(cadena+i)
+        for (int j=0;cadena_final[j] != '\0';j++) {
+            if(cadena_final[j] == *(cadena+i) && i!=j){
+                cadena_final[j]
+                //break;
+            }
+        }
+        cout<<*(cadena+i);
+
+    }
 }
