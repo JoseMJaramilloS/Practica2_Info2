@@ -17,13 +17,13 @@ int main()
     cout<<"(1) Combinacion de billetes"<<endl;
     cout<<"(2) Arreglo de letras repetidas"<<endl;
     cout<<"(4) Cadena de numeros a enteros"<<endl;
-    cout<<"(5)"<<endl;
+    cout<<"(5) Numero entero a cadena"<<endl;
     cout<<"(7) Borrar letras repetidas"<<endl;
     cout<<"(10) Numeros romanos"<<endl;
     cout<<"(12) Cuadrado magico"<<endl;
     cout<<"(13)"<<endl;
     cout<<"(15)"<<endl;
-    cout<<"(18)"<<endl;
+    cout<<"(18) Permutaciones lexicograficas"<<endl;
     while(true){
 
         cout<<"\nIngrese numero del problema: ";
@@ -70,6 +70,20 @@ int main()
             }
 
             case 5:{
+                cout<<"\nPROBLEMA 5"<<endl;
+
+                cout<<"Ingrese numero: "; cin>>num;
+
+                a= digitsCalc(num);//a= digitos; se usa funcion para calcular digitos
+
+                char *cad=new char[a+1]; //creo variable puntero del tamaño de los digitos del numero
+                cad[a]='\0';//agrego fin de linea a la cadena
+
+                int2char(cad,a,num); //funcion de conversion
+                mostrarCadena(cad); //funcion que muestra la cadena
+
+                delete[] cad;
+                cout<<endl;
                 break;
             }
 
@@ -134,6 +148,26 @@ int main()
             }
 
             case 18:{
+                cout<<"\nPROBLEMA 18"<<endl;
+                cout<<"Digite el numero de permutacion deseada: "; cin>>num;
+                int *digitos= new int(10); //creo puntero porque necesito usarla en funcion y que cambie globalmente
+                int numeros[10]={0,1,2,3,4,5,6,7,8,9};
+
+
+                for (int i=*digitos-1;i>=0;i--) { //i es el factoial
+                    for (int j=*digitos-1;j>=0;j--) { //j es q: da la posicion del proximo valor en el arreglo
+                        if(j*factorial(i)<num){ //si es el mayor multiplo de i, menor que num (valor ingresado actualizable)
+                            num -= j*factorial(i);
+                            //cout<<"q: "<<j<<endl;//testeo
+                            //cout<<numeros[j]<<endl;//testeo
+                            cout<<numeros[j];
+
+                            quitaElementos(numeros, j, digitos);//funcion que quita elementos (arreglo, indice, digitos)
+                            break;
+                        }
+                    }
+                }
+                delete digitos;
                 break;
             }
 

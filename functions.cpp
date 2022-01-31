@@ -55,10 +55,34 @@ int char2int_2(char cadena[], int tam){//4 Convierte cadenas de caracteres a ent
     return entero;
 }
 
-//void int2char(int *num, ){//5 Convierte enteros a cadena de caracteres
-//    char *cadena;
+int digitsCalc(int num){//5 Calcula el numero de digitos de un numero entero
+    int digitos=0;
+    while (num !=0) {
+        num /= 10;
+        digitos++;
+    }
 
-//}
+    return digitos;
+}
+
+int potencia(int num,int exp){//5 efectua la operacion num^exp
+    int rslt=1;
+    for (int i=1;i<=exp;i++) {
+        rslt *=num;
+    }
+    return rslt;
+}
+
+void int2char(char *cad, int digitos, int num){//5 convierte un numero entero a cadena de caracteres
+    int resto;
+
+    for (int i=0;i<digitos;i++) {
+        resto=num/(potencia(10,((digitos-1)-i)));//num/10^(digitos-1-i)
+
+        *(cad+i)= 48 + resto;
+        num = num-resto*(potencia(10,((digitos-1)-i)));
+    }
+}
 
 void isRepeat(char arreglo[]){//2 Encuentra el numero de letras repetidas en un arreglo
     char letra=65;
@@ -136,7 +160,7 @@ void mostrarCadena(char *cadena){//7 Muestra una cadena de caracteres
     //cout<<endl;
 }
 
-void borrarRepetidos(char *cadena){
+void borrarRepetidos(char *cadena){//7 Borra los repetidos de una cadena
 
     int j=0;
     char cadena_final[30];
@@ -153,4 +177,25 @@ void borrarRepetidos(char *cadena){
 
 
     }
+}
+
+int factorial(int N){//18 retorna el factorial de un numero
+    int result=1;
+    if(N<0) cout<<"Operacion factorial no definido para el numero "<<N<<endl;
+    else{
+        for(;N>0;N--) result*=N;
+        //cout <<aux<<"!="<< result<<endl;
+
+        }
+    return result;
+}
+
+void quitaElementos(int *numeros, int indice, int *digitos){//18 quita elementos de un arreglo
+
+    for (int i=indice;i<*digitos-1;i++) {//recorro los numeros desde el indice hasta el final del actual arreglo
+        *(numeros+i)=*(numeros+i+1); //si el valor coincide con el valor en el indice, se omite (se corre a la izquierda)
+    }
+
+    (*digitos)--; //se disminuyen los digitos
+    numeros[*digitos]='\0';
 }
