@@ -16,4 +16,4 @@ void mostrarCadena(char *);//7
 void borrarRepetidos(char *);//7
 int factorial(int);
 void quitaElementos(int *, int, int *);
-
+bool intersectRectangle(int *r1, int *r2, int *IN);

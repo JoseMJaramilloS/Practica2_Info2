@@ -199,3 +199,37 @@ void quitaElementos(int *numeros, int indice, int *digitos){//18 quita elementos
     (*digitos)--; //se disminuyen los digitos
     numeros[*digitos]='\0';
 }
+
+bool intersectRectangle(int *r1, int *r2, int *IN){
+    if(*(r1)<= *(r2)){                               //si  x <= x'
+        if(*(r1+1)>= *(r2+1)){                       //si  y >= y'
+            if((*(r2)<=*(r1)+*(r1+2)) && (*(r2+1)>=*(r1+1)-*(r1+3))){      //si (x' <= x+w) & (y' >= y-h) hay interseccion
+                *(IN)= *(r2);         // x', y' pertenecen a la interseccion
+                *(IN+1)= *(r2+1);
+                if(*(r2) + *(r2+2) <= *(r1)+*(r1+2)) //si x'+w' <= x + w
+                    *(IN+2)= *(r2+2)  ;              //w' pertenece a la interseccion
+                else *(IN+2)= *(r1)+*(r1+2)-*(r2);   // x+w-x' pertenece a la interseccion
+                if(*(r2+1)-*(r2+3) >= *(r1+1)-*(r1+3)) // si y'-h' >= y-h
+                    *(IN+3)= *(r1+3)-*(r2+2)+*(r2+3); //h' pertenece a la interseccion (teoria de conjuntos)
+                    //*(IN+3)= *(r2+3); //h' pertenece a la interseccion
+                else *(IN+3)= -*(r1+1)+*(r1+3)+*(r2+1); // -y+h+y' pertenece a la interseccion
+                return true;
+            }
+        }
+        else{
+            if((*(r2)<= *(r1)+*(r1+2)) && (*(r1+1)>= *(r2+1)-*(r2+3))){   //si (x' <= x+w) & (y >= y'-h') hay interseccion
+                *(IN)=*(r2);         //x' pertenece a la interseccion
+                *(IN+1)=*(r1+1);     //y  pertenece a la interseccion
+                if(*(r1)+*(r1+2) <= *(r2)+*(r2+2)) //si x+w <= x'+w'
+                    *(IN+2) = *(r1)+*(r1+2)-*(r2); // x+w-x' pertenece a la interseccion
+                else *(IN+2) = *(r2+2);            //w' pertenece a la interseccion
+                if(*(r1+1)-*(r1+3) <= *(r2+1)-*(r2+3)) // si y-h <= y'-h'
+                    *(IN+3) = -*(r2+1)+*(r2+3)+*(r1+1);  //-y'+h'+y pertenece a la interseccion
+                else *(IN+3) = *(r1+3); //h pertenece a la interseccion
+                return true;
+            }
+        }
+
+    }
+    return false;
+}

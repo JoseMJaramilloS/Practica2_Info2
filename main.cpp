@@ -22,7 +22,7 @@ int main()
     cout<<"(10) Numeros romanos"<<endl;
     cout<<"(12) Cuadrado magico"<<endl;
     cout<<"(13)"<<endl;
-    cout<<"(15)"<<endl;
+    cout<<"(15) Interseccion de rectangulos"<<endl;
     cout<<"(18) Permutaciones lexicograficas"<<endl;
     while(true){
 
@@ -144,6 +144,31 @@ int main()
             }
 
             case 15:{
+                cout<<"\nPROBLEMA 15"<<endl;
+
+                int rec1[4], rec2[4], sec[4];    //rectangulos 1 y 2, sec corresponde a su interseccion
+
+                cout<<endl<<"Ingrese el rectangulo 1 (x, y, ancho, alto). Un dato a la vez: "<<endl;
+                for(int i = 0; i<4; i++){
+                    cin>> *(rec1+i);
+                }
+
+
+                cout<<endl<<"Ingrese el rectangulo 2 (x, y, ancho, alto). Un dato a la vez: "<<endl;
+                for(int i = 0; i<4; i++){
+                    cin>> *(rec2+i);
+                }
+
+
+                cout<<endl<<"El rectangulo interseccion corresponde a: ";
+
+                if(intersectRectangle(rec1,rec2,sec) == true)    // if true, se ha encontrado la interseccion
+                    cout<<"{"<<*(sec)<<","<<*(sec+1)<<","<<*(sec+2)<<","<<*(sec+3)<<"}"<<endl<<endl;
+
+                else if (intersectRectangle(rec2,rec1,sec)== true) //vectores en orden contrario
+                    cout<<"{"<<*(sec)<<","<<*(sec+1)<<","<<*(sec+2)<<","<<*(sec+3)<<"}"<<endl<<endl;
+
+                else cout<<endl<<"Interseccion vacia. "<<endl;  //Se han revisdo todos los casos, no hay interseccion
                 break;
             }
 
@@ -168,6 +193,7 @@ int main()
                     }
                 }
                 delete digitos;
+                cout<<endl;
                 break;
             }
 
