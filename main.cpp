@@ -21,7 +21,7 @@ int main()
     cout<<"(7) Borrar letras repetidas"<<endl;
     cout<<"(10) Numeros romanos"<<endl;
     cout<<"(12) Cuadrado magico"<<endl;
-    cout<<"(13)"<<endl;
+    cout<<"(13) Contador de estrellas"<<endl;
     cout<<"(15) Interseccion de rectangulos"<<endl;
     cout<<"(18) Permutaciones lexicograficas"<<endl;
     while(true){
@@ -140,6 +140,27 @@ int main()
             }
 
             case 13:{
+                int fil=6;
+                int col=8;
+                float stars[6][8]={{0,3,4,0,0,0,6,8},
+                                  {5,13,6,0,0,0,2,3},
+                                  {2,6,2,7,3,0,10,0},
+                                  {0,0,4,15,4,1,6,0},
+                                  {0,0,7,12,6,9,10,4},
+                                  {5,0,6,10,6,4,8,0}};
+
+                float** stars_p=new float*[fil]; //asignando filas (cada fila es un puntero)
+                for(int i = 0 ; i < 15; i++){
+                    stars_p[i] = new float[col]; //asignando columnas
+                }
+                for(int i = 0 ; i < fil; i++){ //Se llena la matriz
+                    for(int j = 0 ; j < col; j++){
+                        *(*(stars_p+i)+j)=stars[i][j];
+                    }
+                }
+
+                cout<<"Hay "<<starsFounder(stars_p,fil,col)<<" estrellas en la representacion digital"<<endl;
+                delete [] stars_p;
                 break;
             }
 

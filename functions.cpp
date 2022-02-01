@@ -200,7 +200,7 @@ void quitaElementos(int *numeros, int indice, int *digitos){//18 quita elementos
     numeros[*digitos]='\0';
 }
 
-bool intersectRectangle(int *r1, int *r2, int *IN){
+bool intersectRectangle(int *r1, int *r2, int *IN){//15 verifica y encuentra la interseccion entre dos rectangulos
     if(*(r1)<= *(r2)){                               //si  x <= x'
         if(*(r1+1)>= *(r2+1)){                       //si  y >= y'
             if((*(r2)<=*(r1)+*(r1+2)) && (*(r2+1)>=*(r1+1)-*(r1+3))){      //si (x' <= x+w) & (y' >= y-h) hay interseccion
@@ -232,4 +232,15 @@ bool intersectRectangle(int *r1, int *r2, int *IN){
 
     }
     return false;
+}
+
+int starsFounder(float **stars, int fil, int col)//13 encuentra estrellas en una matriz
+{
+    int sum=0;
+    for (int i=1;i<fil-1;i++) {
+        for (int j=1;j<col-1;j++) {
+            if((*(*(stars+i)+j) + *(*(stars+i)+(j-1)) + *(*(stars+i)+(j+1)) + *(*(stars+(i-1))+j) + *(*(stars+(i+1))+j))/5.0 >6) sum++;
+        }
+    }
+    return sum;
 }

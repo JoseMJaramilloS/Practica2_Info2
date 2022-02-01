@@ -14,6 +14,7 @@ void mostrarMatriz(int **matriz, int n);//12
 void isMagic(int **matriz, int n);//12
 void mostrarCadena(char *);//7
 void borrarRepetidos(char *);//7
-int factorial(int);
-void quitaElementos(int *, int, int *);
-bool intersectRectangle(int *r1, int *r2, int *IN);
+int factorial(int);//18
+void quitaElementos(int *, int, int *);//18
+bool intersectRectangle(int *r1, int *r2, int *IN);//15
+int starsFounder(float **stars, int , int );//13
